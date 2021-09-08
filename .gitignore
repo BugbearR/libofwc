@@ -1,0 +1,6 @@
+# build files
+*.o
+*.d
+
+# local config
+.vscode
