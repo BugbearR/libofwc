@@ -1,22 +1,22 @@
-#ifndef Ofw_VarArray_H_
-#define Ofw_VarArray_H_ 1
+#ifndef ofw_DynArray_H_
+#define ofw_DynArray_H_ 1
 
-#ifdef Ofw_HAVE_PRAGMA_ONCE
+#ifdef ofw_HAVE_PRAGMA_ONCE
 #pragma once
 #endif
 
 #include <stdint.h>
 
-#ifndef Ofw_Base_H
+#ifndef ofw_Base_H
 #include "ofw/base.h"
 #endif
 
-typedef struct Ofw_VarArray_tag
+typedef struct ofw_DynArray_tag
 {
     int32_t elementSize;
     int32_t length;
     void *pBuffer;
-} Ofw_VarArray_t;
+} ofw_DynArray_t;
 
 /**
  * @brief initialize
@@ -24,14 +24,14 @@ typedef struct Ofw_VarArray_tag
  * @param[in,out] pThis Object
  * @param elementSize size of element
  */
-void Ofw_VarArray_init(Ofw_VarArray_t *pThis, int32_t elementSize);
+void ofw_DynArray_init(ofw_DynArray_t *pThis, int32_t elementSize);
 
 /**
  * @brief finalize
  * 
  * @param[in,out] pThis Object
  */
-void Ofw_VarArray_final(Ofw_VarArray_t *pThis);
+void ofw_DynArray_final(ofw_DynArray_t *pThis);
 
 /**
  * @brief set state
@@ -41,7 +41,7 @@ void Ofw_VarArray_final(Ofw_VarArray_t *pThis);
  * @param length count of element
  * @param pBuffer pointer to buffer
  */
-void Ofw_VarArray_setState(Ofw_VarArray_t *pThis, int32_t elementSize, int32_t length, void *pBuffer);
+void ofw_DynArray_setState(ofw_DynArray_t *pThis, int32_t elementSize, int32_t length, void *pBuffer);
 
 /**
  * @brief copy state
@@ -49,7 +49,7 @@ void Ofw_VarArray_setState(Ofw_VarArray_t *pThis, int32_t elementSize, int32_t l
  * @param pThis Object
  * @param pSrc source object
  */
-void Ofw_VarArray_copyState(Ofw_VarArray_t *pThis, Ofw_VarArray_t *pSrc);
+void ofw_DynArray_copyState(ofw_DynArray_t *pThis, ofw_DynArray_t *pSrc);
 
 /**
  * @brief get pointer to element
@@ -58,7 +58,7 @@ void Ofw_VarArray_copyState(Ofw_VarArray_t *pThis, Ofw_VarArray_t *pSrc);
  * @param index index of element
  * @return void* pointer to element 
  */
-void *Ofw_VarArray_getPtr(Ofw_VarArray_t *pThis, int32_t index);
+void *ofw_DynArray_getPtr(ofw_DynArray_t *pThis, int32_t index);
 
 /**
  * @brief get pointer to element (macro ver.)
@@ -67,6 +67,6 @@ void *Ofw_VarArray_getPtr(Ofw_VarArray_t *pThis, int32_t index);
  * @param index index of element
  * @return void* pointer to element 
  */
-#define Ofw_VarArray_getPtrM(pThis, index) ((void*)(((char*)pThis->pBuffer) + pThis->elementSize * (index)))
+#define ofw_DynArray_getPtrM(pThis, index) ((void*)(((char*)pThis->pBuffer) + pThis->elementSize * (index)))
 
-#endif /* Ofw_VarArray_H_ */
+#endif /* ofw_DynArray_H_ */
