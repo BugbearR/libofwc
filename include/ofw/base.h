@@ -1,5 +1,5 @@
 #ifndef Ofw_Base_H_
-#define Ofw_Base_H_ 1
+#define Ofw_Base_H_
 
 #ifdef Ofw_HAVE_PRAGMA_ONCE
 #pragma once
@@ -17,5 +17,9 @@ typedef int32_t Ofw_Result_t;
 
 #define Ofw_Result_isFailed(result) (result < 0)
 #define Ofw_Result_isSucceeded(result) (result >= 0)
+
+typedef int32_t Ofw_Error_t;
+
+
 
 #endif /* Ofw_Base_H_ */
