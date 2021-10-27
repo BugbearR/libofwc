@@ -1,4 +1,4 @@
-#if !defined Ofw_VarArray_H_
+#ifndef Ofw_VarArray_H_
 #define Ofw_VarArray_H_ 1
 
 #ifdef Ofw_HAVE_PRAGMA_ONCE
@@ -6,6 +6,10 @@
 #endif
 
 #include <stdint.h>
+
+#ifndef Ofw_Base_H
+#include "ofw/base.h"
+#endif
 
 typedef struct Ofw_VarArray_tag
 {
@@ -40,13 +44,29 @@ void Ofw_VarArray_final(Ofw_VarArray_t *pThis);
 void Ofw_VarArray_setState(Ofw_VarArray_t *pThis, int32_t elementSize, int32_t length, void *pBuffer);
 
 /**
- * @brief get pointer to eleemnt
+ * @brief copy state
+ * 
+ * @param pThis Object
+ * @param pSrc source object
+ */
+void Ofw_VarArray_copyState(Ofw_VarArray_t *pThis, Ofw_VarArray_t *pSrc);
+
+/**
+ * @brief get pointer to element
  * 
  * @param pThis Object
  * @param index index of element
  * @return void* pointer to element 
  */
 void *Ofw_VarArray_getPtr(Ofw_VarArray_t *pThis, int32_t index);
-//#define Ofw_VarArray_getPtr(pThis, index) ((void*)(((char*)pThis->pBuffer) + pThis->elementSize * (index)))
+
+/**
+ * @brief get pointer to element (macro ver.)
+ * 
+ * @param pThis Object
+ * @param index index of element
+ * @return void* pointer to element 
+ */
+#define Ofw_VarArray_getPtrM(pThis, index) ((void*)(((char*)pThis->pBuffer) + pThis->elementSize * (index)))
 
 #endif /* Ofw_VarArray_H_ */
