@@ -1,6 +1,6 @@
 #include <ofw/dynarray.h>
 
-#include <stddef.h>
+#include <stdlib.h>
 #include <ofw/error.h>
 
 ofw_Result_t ofw_DynArray_shrink(ofw_DynArray_t *pThis, ofw_Error_t *pOutError)

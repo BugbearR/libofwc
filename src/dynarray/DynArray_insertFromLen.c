@@ -38,26 +38,27 @@ ofw_Result_t ofw_DynArray_insertFromLen(ofw_DynArray_t *pThis, int32_t from, int
             goto EXIT_FUNC;
         }
 
-        if (ofw_Result_isFailed(ofw_DynArray_setCapacity(pThis->length + length, &subError)))
+        if (ofw_Result_isFailed(ofw_DynArray_requireCapacity(pThis, pThis->length + length, &subError)))
         {
             myError = subError;
             goto EXIT_FUNC;
         }
 
-        if (!ofw_SafeCalc_canMul_size((size_t)pThis->elementSize, (size_t)length))
+        int32_t moveCount = pThis->length - from;
+        if (moveCount > 0)
         {
-            myError = ofw_Error_OVERFLOW | ofw_Error_PARAM3;
-            goto EXIT_FUNC;
-        }
+            if (!ofw_SafeCalc_canMul_size((size_t)pThis->elementSize, (size_t)moveCount))
+            {
+                myError = ofw_Error_OVERFLOW | ofw_Error_PARAM3;
+                goto EXIT_FUNC;
+            }
+            size_t charLen = (size_t)pThis->elementSize * (size_t)moveCount;
 
-        size_t charLen = pThis->elementSize * (pThis->length - from);
-        if (charLen > 0)
-        {
-            void *pDst = pThis->pBuffer + pThis->elementSize * from;
-            void *pSrc = pThis->pBuffer + pThis->elementSize * (from + length);
+            void *pSrc = ofw_DynArray_getPtrM(pThis, from);
+            void *pDst = ofw_DynArray_getPtrM(pThis, from + length);
             memmove(pDst, pSrc, charLen);
         }
-        pThis->length -= length;
+        pThis->length += length;
     }
 
     myResult = ofw_Result_SUCCEEDED;

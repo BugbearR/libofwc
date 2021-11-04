@@ -30,10 +30,14 @@ ofw_Result_t ofw_DynArray_deleteFromLen(ofw_DynArray_t *pThis, int32_t from, int
 
     if (length > 0)
     {
-        void *pDst = ofw_DynArray_getPtrM(pThis, from);
-        void *pSrc = ofw_DynArray_getPtrM(pThis, from + length);
-        size_t charLen = (size_t)pThis->elementSize * (size_t)(pThis->length - (from + length));
-        memmove(pDst, pSrc, charLen);
+        int32_t moveCount = pThis->length - (from + length);
+        if (moveCount > 0)
+        {
+            void *pDst = ofw_DynArray_getPtrM(pThis, from);
+            void *pSrc = ofw_DynArray_getPtrM(pThis, from + length);
+            size_t charLen = (size_t)pThis->elementSize * (size_t)moveCount;
+            memmove(pDst, pSrc, charLen);
+        }
 
         pThis->length -= length;
     }

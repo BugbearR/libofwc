@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ofw/error.h>
 
-ofw_Result_t ofw_DynArray_setCapacity(ofw_DynArray_t *pThis, int32_t capacity, ofw_Error_t *pOutError)
+ofw_Result_t ofw_DynArray_requireCapacity(ofw_DynArray_t *pThis, int32_t capacity, ofw_Error_t *pOutError)
 {
     ofw_Error_t myError = ofw_Error_ERROR;
     ofw_Result_t myResult = ofw_Result_FAILED;
@@ -14,13 +14,7 @@ ofw_Result_t ofw_DynArray_setCapacity(ofw_DynArray_t *pThis, int32_t capacity, o
         goto EXIT_FUNC;
     }
 
-    if (capacity < pThis->length)
-    {
-        myError = ofw_Error_TOO_SMALL | ofw_Error_PARAM2;
-        goto EXIT_FUNC;
-    }
-
-    if (pThis->capacity != capacity)
+    if (capacity >= pThis->length)
     {
         if (!ofw_SafeCalc_canMul_size((size_t)pThis->elementSize, (size_t)capacity))
         {

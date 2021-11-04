@@ -1,5 +1,7 @@
 #include <ofw/dynarray.h>
 
+#include <stdlib.h>
+
 void ofw_DynArray_final(ofw_DynArray_t *pThis)
 {
     if (!pThis) return;
