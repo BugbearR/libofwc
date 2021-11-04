@@ -91,7 +91,7 @@
  */
 #define ofw_Error_declReasonMain(n) ((n)<<ofw_Error_REASON_MAIN_BASE)
 
-#define ofw_Error_declOfwReasonMain(n) (ofw_Error_OWNER_ofw | ofw_Error_declReasonMain(n))
+#define ofw_Error_declOfwReasonMain(n) (ofw_Error_OWNER_OFW | ofw_Error_declReasonMain(n))
 
 /**
  * Error.
