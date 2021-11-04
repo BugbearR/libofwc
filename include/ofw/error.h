@@ -28,11 +28,11 @@
 #define ofw_Error_getOwner(e) ((e) & ofw_Error_OWNER_MASK)
 
 #define ofw_Error_OWNER_ERRNO (0)
-#define ofw_Error_OWNER_ofw (1 << ofw_Error_OWNER_BASE)
+#define ofw_Error_OWNER_OFW (1 << ofw_Error_OWNER_BASE)
 #define ofw_Error_OWNER_USER (2 << ofw_Error_OWNER_BASE)
 
 #define ofw_Error_isOwnerErrno(e) (((e) & ofw_Error_OWNER_MASK) == ofw_Error_OWNER_ERRNO)
-#define ofw_Error_isOwnerOfw(e) (((e) & ofw_Error_OWNER_MASK) == ofw_Error_OWNER_Ofw)
+#define ofw_Error_isOwnerOfw(e) (((e) & ofw_Error_OWNER_MASK) == ofw_Error_OWNER_OFW)
 #define ofw_Error_isOwnerUser(e) (((e) & ofw_Error_OWNER_MASK) == ofw_Error_OWNER_USER)
 
 #define ofw_Error_REASON_MAIN_BASE (8)
