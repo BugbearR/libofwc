@@ -1,5 +1,7 @@
 #include <ofw/dynarray.h>
 
+#include <assert.h>
+
 void *ofw_DynArray_getPtr(ofw_DynArray_t *pThis, int32_t pos)
 {
     assert(!pThis);
