@@ -5,6 +5,9 @@
 #pragma once
 #endif
 
+#include <stdint.h>
+#include <inttypes.h>
+
 /**
  * @brief create base bit mask
  * @param type type name (ex. int64_t -> INT64)

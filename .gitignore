@@ -1,6 +1,14 @@
+# directory
+dist
+build
+test/dist
+test/build
+
 # build files
 *.o
 *.d
 
 # local config
 .vscode
+
+
