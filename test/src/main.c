@@ -4,7 +4,7 @@
 #include <ofw/unittest.h>
 #include <ofw/bit.h>
 
-#include "bit.h"
+#include "test_bit.h"
 
 int main(int argc, char *argv[])
 {
