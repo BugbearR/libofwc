@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <ofw/error.h>
+#include <ofw/safecalc.h>
 
 ofw_Result_t ofw_DynArray_setCapacity(ofw_DynArray_t *pThis, int32_t capacity, ofw_Error_t *pOutError)
 {
