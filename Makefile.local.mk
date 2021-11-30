@@ -1,1 +1,1 @@
-CFLAGS = -g 
+CFLAGS = -g -Dofw_HAVE_PRAGMA_ONCE
