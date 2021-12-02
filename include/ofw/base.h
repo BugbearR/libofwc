@@ -7,6 +7,23 @@
 
 #include <stdint.h>
 
+#include <ofw/local/base.h>
+
+/* redefine raw type to single name */
+typedef char char_t;
+typedef short short_t;
+typedef int int_t;
+typedef long long_t;
+typedef long long llong_t;
+
+typedef signed char schar_t;
+
+typedef unsigned char uchar_t;
+typedef unsigned short ushort_t;
+typedef unsigned int uint_t;
+typedef unsigned long ulong_t;
+typedef unsigned long long ullong_t;
+
 /**
  * @brief suppress unused parameter warning
  */
