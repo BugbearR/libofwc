@@ -6,6 +6,7 @@
 #endif
 
 #include <stdint.h>
+#include <limits.h>
 
 /**
  * @brief Test if the value castable to type. (unsigned)
