@@ -69,7 +69,7 @@ void *ofw_DynArray_getPtr(ofw_DynArray_t *pThis, int32_t index);
  * @param index index of element
  * @return void* pointer to element
  */
-#define ofw_DynArray_getPtrM(pThis, index) ((void*)(((char*)pThis->pBuffer) + pThis->elementSize * (index)))
+#define ofw_DynArray_getPtrM(pThis, index) ((void*)(((char*)(pThis)->pBuffer) + (pThis)->elementSize * (index)))
 
 /**
  * @brief Secure the required capacity.
@@ -134,5 +134,9 @@ ofw_Result_t ofw_DynArray_deleteFromLen(ofw_DynArray_t *pThis, int32_t from, int
 #define ofw_DynArray_deleteFromTo(pThis, from, to, pOutError) \
     ofw_DynArray_deleteFromLen(pThis, from, to - from, pOutError)
 
+// #define ofw_DynArray_setValue(pThis, index, value) \
+//     do { \
+//         memcpy((ofw_DynArray_getPtrM((pThis), (index))), &(value), (pThis)->elementSize); \
+//     } while (0)
 
 #endif /* ofw_DynArray_H_ */

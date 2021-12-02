@@ -1,6 +1,10 @@
 # for GNU make
 BUILD_CONF ?= release
 #BUILD_CONF = debug
+
+SYSTEM_INCLUDE_DIR = /usr/local/include
+SYSTEM_LIB_DIR = /usr/local/lib
+
 CFLAGS ?= -g
 CUR_DIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 TARGET_BASE_NAME = $(notdir $(CUR_DIR:%/=%))
@@ -30,6 +34,14 @@ all: $(TARGET_FULL)
 .PHONY: clean
 clean:
 	-rm -rf $(BUILD_FULL_DIR)
+
+install:
+	cp -p $(TARGET_FULL) $(SYSTEM_LIB_DIR)/
+	cp -pr $(INCLUDE_DIR)/* $(SYSTEM_INCLUDE_DIR)/
+
+uninstall:
+	rm -f $(SYSTEM_LIB_DIR)/$(TARGET)
+	(cd $(INCLUDE_DIR); find . -type f -exec rm -f $(SYSTEM_INCLUDE_DIR)/{} \;)
 
 $(TARGET_FULL): $(OBJS)
 	@mkdir -p $$(dirname "$@")

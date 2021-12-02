@@ -60,4 +60,11 @@
 #define ofw_UnitTest_assertEqualsUInt32(expr, expected) \
     ofw_UnitTest_assertEquals(uint32_t, PRIu32, expr, #expr, expected)
 
+#define ofw_UnitTest_assertEqualsResult(expr, expected) \
+    ofw_UnitTest_assertEquals(ofw_Result_t, ofw_Result_PRId32, expr, #expr, expected)
+
+#define ofw_UnitTest_assertEqualsError(expr, expected) \
+    ofw_UnitTest_assertEquals(ofw_Error_t, ofw_Error_PRIx, expr, #expr, expected)
+
+
 #endif /* ofw_UnitTest_H_ */

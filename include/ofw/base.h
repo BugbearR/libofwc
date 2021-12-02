@@ -6,6 +6,7 @@
 #endif
 
 #include <stdint.h>
+#include <inttypes.h>
 
 #include <ofw/local/base.h>
 
@@ -31,6 +32,7 @@ typedef unsigned long long ullong_t;
 
 /** simple result code (r<0: error, r>=0: no error) */
 typedef int32_t ofw_Result_t;
+#define ofw_Result_PRId PRId32
 
 // FAIL, FAILED, FAILURE, ERROR
 #define ofw_Result_FAILED (-1)
@@ -41,5 +43,8 @@ typedef int32_t ofw_Result_t;
 #define ofw_Result_isSucceeded(result) (result >= 0)
 
 typedef int32_t ofw_Error_t;
+#define ofw_Error_PRIx PRIx32
+
+#define ofw_Array_getLength(a) (sizeof(a)/sizeof((a)[0]))
 
 #endif /* ofw_Base_H_ */
