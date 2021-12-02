@@ -45,10 +45,19 @@
         } \
     } while (0)
 
+#define ofw_UnitTest_assertEqualsInt(expr, expected) \
+    ofw_UnitTest_assertEquals(int_t, "d", expr, #expr, expected)
+
+#define ofw_UnitTest_assertEqualsLong(expr, expected) \
+    ofw_UnitTest_assertEquals(long_t, "ld", expr, #expr, expected)
+
+#define ofw_UnitTest_assertEqualsULong(expr, expected) \
+    ofw_UnitTest_assertEquals(ulong_t, "lu", expr, #expr, expected)
+
 #define ofw_UnitTest_assertEqualsInt32(expr, expected) \
     ofw_UnitTest_assertEquals(int32_t, PRId32, expr, #expr, expected)
 
-#define ofw_UnitTest_assertEqualsUint32(expr, expected) \
+#define ofw_UnitTest_assertEqualsUInt32(expr, expected) \
     ofw_UnitTest_assertEquals(uint32_t, PRIu32, expr, #expr, expected)
 
 #endif /* ofw_UnitTest_H_ */
