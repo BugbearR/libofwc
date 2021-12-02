@@ -12,13 +12,25 @@
     int ofw_UnitTest_isSucceededFlag = 1;
 
 #define ofw_UnitTest_return() \
-    return ofw_UnitTest_isSucceededFlag;
+    do { \
+        return ofw_UnitTest_isSucceededFlag; \
+    } while (0)
 
 #define ofw_UnitTest_returnIfFailed() \
-    if (!ofw_UnitTest_isSucceededFlag) return 0;
+    do { \
+        if (!ofw_UnitTest_isSucceededFlag) { \
+            printf("%s(%d):%s:failed.\n", __FILE__, __LINE__, __func__); \
+            return 0; \
+        } \
+    } while (0)
 
 #define ofw_UnitTest_exitIfFailed() \
-    if (!ofw_UnitTest_isSucceededFlag) exit(EXIT_FAILURE);
+    do { \
+        if (!ofw_UnitTest_isSucceededFlag) { \
+            printf("%s(%d):%s:failed.\n", __FILE__, __LINE__, __func__); \
+            exit(EXIT_FAILURE); \
+        } \
+    } while (0)
 
 #define ofw_UnitTest_assert(expr) \
     do { \
